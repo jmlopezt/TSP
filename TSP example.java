@@ -68,9 +68,48 @@ public class Problema {
 
 
 public class Ruta {
-	private int[] ruta;// este metodo devuelve la ruta calculada ya, pero no el string;n sino su posicion en el vector listaciudades.
+	
+	private int[] ruta;//que sea mejor un arrayList
+	// este metodo devuelve la ruta calculada ya, pero no el string;n sino su posicion en el vector listaciudades.
+	
+	private int nCiudades; //ciudades.size
+}
 
+public class HeuristicaVecinoMasCercano {
 
+	private Ruta ruta;
+	
+	public Ruta obtenerMejorRuta(ArrayList ciudades){
+		Ruta ordenViaje = new Ruta();
+		Ciudad ciudadActual; // hay que introducir la ciudad desde donde sale el comerciante.
+					//Creo que esto se añade en otra clase que pida la ciudad inicial.
+		Punto posicionActual = new Punto();
+		posicionActual = ciudadActual.getPosicion;
+		ordenViaje.add(0,posicionActual);
+		int ciudadesRecorridas = 0;
+		ArrayList<double> distancia = new ArrayList<double>();
+		
+		
+		while(ciudadesRecorridas!=ciudades.size()-1){ //Cuando se hayan recorrido todas las ciudades el bucle while para.
+		
+			for (int i=0; i<ciudades.size();i++){
+				distancia.add(i,ciudades.get(ciudadActual).getPosicion.distanciaEuclidea(ciudades.get(i).getPosicion));
+				//"distancia" es un vector que contiene la distancia desde la ciudad inicial hasta cada una de las
+				//ciudades que hay en la lista. En la posicion 0 esta la distancia desde ciudad 0 hasta ciudadInicial
+				
+			}
+		//a continuación se calcula el mínimo valor de distancia, que sea distinto que cero y obtenemos su posición:
+		//encontramos el valor minimo de distancia, y la posicion de distancia (posNext) se guarda "en ordenViaje"
+		//seria algo asi: ordenViaje.add(posNext);
+		
+		//despues pasamos a la siguiente ciudad:
+		posicionActual = ciudades.get(posNext).getPosicion;
+		ciudadesRecorridas++;
+		}
+		
+	return ordenViaje;	
+	}
+	
 }
 
 }
