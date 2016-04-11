@@ -1,6 +1,16 @@
 public class Ciudad {
 	private string etiqueta;
 	private double x,y;
+	
+	Punto getPosicion(){
+		Punto posicion = new Punto();
+		posicion.x=x;
+		posicion.y=y;
+		return posicion; //ESTA PARTE CREO QUE NO LA HE HECHO BIEN
+	}
+	
+
+	
 }
 
 public class Problema {
@@ -25,8 +35,35 @@ public class Problema {
 			y=sc.nextDouble();
 			ciudad=new Ciudad(eqtiqueta,x,y);
 			analdirCiudad(ciudad);
-
 		}
+	}
+	public static int getNumeroCiudades(){
+		int nCiudades=ciudades.size(); //hay que crear un arrayList que se llame cuidades donde 
+					       //metemos la posicion y el nombre de cada ciudad
+	}
+	
+	public static Ciudad getCiudad(int pos){
+		Ciudad ciudadAux= new Ciudad();
+		ciudadAux= ciudades.get(pos);
+		return ciudadAux;
+	}
+	
+	public double getDistancia(int pos1, int pos2){
+		double distancia;
+	 	Ciudad ciudadAux1 = new Ciudad();
+	 	Ciudad ciudadAux2 = new Ciudad();
+	 	
+	 	ciudadAux1= ciudades.get(pos1);
+		ciudadAux2= ciudades.get(pos2);
+		
+		distancia= ciudadAux1.getPosicion.distanciaEublidea(ciudadAux2.getPosicion);
+		
+		return distancia;
+	}
+	
+	
+
+			
 	}
 
 
