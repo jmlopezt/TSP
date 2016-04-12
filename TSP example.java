@@ -1,4 +1,4 @@
-public class Ciudad {
+﻿public class Ciudad {
 	private string etiqueta;
 	private double x,y;
 	
@@ -113,3 +113,5 @@ public class HeuristicaVecinoMasCercano {
 }
 
 }
+
+// hola hola
