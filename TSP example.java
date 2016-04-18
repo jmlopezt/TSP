@@ -114,13 +114,15 @@ public class HeuristicaVecinoMasCercano {
 		se han recorrido porque puede haber un caso en el que la distancia mas pequeña sea a una ciudad ya recorrida y, por
 		tanto se esta haciendo mal el problema. */
 		ciudades.remove(posicionActual);
+		ordenViaje.add(posNext);
 		//despues pasamos a la siguiente ciudad:
 		posicionActual = ciudades.get(posNext).getPosicion;
 		ciudadesRecorridas++;
 		}
-		
+		ordenViaje.add(ciudades.size(),ordenViaje.get(0)); /*Se añade en la ruta la ciudad inicial, que es a la que hay que
+		volver una vez finalizado el viaje*/
 	return ordenViaje;
-	//Esta clase esta terminada (o casi) yo creo
+	//Esta clase esta casi terminada (o casi) yo creo.
 	}
 	
 }
