@@ -164,12 +164,36 @@ public class InsercionMasEconomica{
 				pos3=k;
 			}
 		}
+		ordenViaje.add(pos1);
+		ordenViaje.add(pos2);
+		ordenViaje.add(pos3);
 		
+		return ordenViaje;
 	}
 	
-	public Ruta obtenerRutaEconomica(Ruta rutaInicial,ArrayList ciudades){
+	public Ruta obtenerRutaEconomica(ArrayList ciudades){
+		//rutaInicial=ordenViaje (el triangulo calculado anteriormente)
+		Ruta rutaInicial = new Ruta();
+		Ruta rutaFinal = new Ruta();
+		Ruta rutaAux = new Ruta();
+		rutaInicial=obtenerRutaInicial(ciudades);
 		
+		//creamos una ruta auxiliar con las ciudades no pertenecientes a la ruta inicial
+		rutaAux=obtenerMejorRuta(ArrayList ciudades);
+		//a esta ruta auxiliar hay que quitarle las ciudades que pertenecen a la ruta inicial
+		for (int i=0;i<rutaInicial.size(); i++){
+			rutaAux.remove(rutaInicial.get(i));
+		}
+		//Por ultimo, "unimos" ruta inicial con la auxiliar
+		for (int j=0;j<rutaInicial.size(); j++){
+			rutaFinal.add(rutaInicial.get(j));
+		} 
+		for (int k=rutaInicial.size();k<rutaInicial.size()+rutaAux.size()-1; i++){
+			rutaFinal.add(rutaAux.get(k));
+		}
+		return rutaFinal;
 	}
+	
 	
 }
 
