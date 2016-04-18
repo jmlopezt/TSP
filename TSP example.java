@@ -8,10 +8,8 @@
 		posicion.y=y;
 		return posicion; //ESTA PARTE CREO QUE NO LA HE HECHO BIEN
 	}
-	
-
-	
 }
+
 
 public class Problema {
 	private Ciudad[] listaCiudades;
@@ -20,6 +18,7 @@ public class Problema {
 	public Problema(int n){
 
 		bla bla bla
+		//METE AQUI LO QUE PUSO EL PROFESOR EN CLASE EL MARTES 12
 	}
 
 	public static Problema leerCiudades(scanner sc){
@@ -88,30 +87,49 @@ public class HeuristicaVecinoMasCercano {
 		ordenViaje.add(0,posicionActual);
 		int ciudadesRecorridas = 0;
 		ArrayList<double> distancia = new ArrayList<double>();
+		int posNext;
 		
+		while(ciudadesRecorridas!=ciudades.size()-1){ //Cuando se hayan recorrido todas las ciudades el bucle while para
 		
-		while(ciudadesRecorridas!=ciudades.size()-1){ //Cuando se hayan recorrido todas las ciudades el bucle while para.
 		
 			for (int i=0; i<ciudades.size();i++){
 				distancia.add(i,ciudades.get(ciudadActual).getPosicion.distanciaEuclidea(ciudades.get(i).getPosicion));
-				//"distancia" es un vector que contiene la distancia desde la ciudad inicial hasta cada una de las
-				//ciudades que hay en la lista. En la posicion 0 esta la distancia desde ciudad 0 hasta ciudadInicial
+				/*"distancia" es un vector que contiene la distancia desde la ciudad inicial hasta cada una de las
+				ciudades que hay en la lista. En la posicion 0 esta la distancia desde ciudad 0 hasta ciudadInicial*/
 				
 			}
-		//a continuación se calcula el mínimo valor de distancia, que sea distinto que cero y obtenemos su posición:
-		//encontramos el valor minimo de distancia, y la posicion de distancia (posNext) se guarda "en ordenViaje"
-		//seria algo asi: ordenViaje.add(posNext);
+		/*a continuación se calcula el mínimo valor de distancia, que sea distinto que cero y obtenemos su posición:
+		encontramos el valor minimo de distancia, y la posicion de distancia (posNext) se guarda "en ordenViaje"
+		seria algo asi: ordenViaje.add(posNext);*/
+			for (int j=0;j<distancia.size()-2;j++){
+				if(distancia.get(j)!=0){ /*si la distancia es 0 es que se esta calculando la distancia entre
+				ciudadActual y ciudadActual*/
+					if (distancia.get(j)<distancia.get(j+1)){
+						posNext=j;		//posNext=siguiente ciudad a la que va el viajero.
+					}	
+				}
+			}
 		
+		/*Antes de calcular la distancia entre ciudades, hay que eliminar del arrayList llamado "ciudades" las ciudades que
+		se han recorrido porque puede haber un caso en el que la distancia mas pequeña sea a una ciudad ya recorrida y, por
+		tanto se esta haciendo mal el problema. */
+		ciudades.remove(posicionActual);
 		//despues pasamos a la siguiente ciudad:
 		posicionActual = ciudades.get(posNext).getPosicion;
 		ciudadesRecorridas++;
 		}
 		
-	return ordenViaje;	
+	return ordenViaje;
+	//Esta clase esta terminada (o casi) yo creo
 	}
 	
 }
 
 }
+//Visualizacion grafica de la solucion
 
-// hola hola
+// MEJORAS PROPUESTAS
+
+//1. Estrategias de insercion
+
+
