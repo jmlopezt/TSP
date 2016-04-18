@@ -198,3 +198,5 @@ public class InsercionMasEconomica{
 }
 
 
+/*FALLO GORDO: public class HeuristicaVecinoMasCercano Y public class InsercionMasEconomica 
+SON DOS METODOS QUE TIENEN QUE IR DENTRO DE public class Ruta.
