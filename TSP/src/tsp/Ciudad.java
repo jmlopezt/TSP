@@ -15,30 +15,41 @@ import java.util.Scanner;
  */
 public class Ciudad {
     
-    Scanner numbin = new Scanner(System.in);  
     private String etiqueta;
     private Punto posicion;
     
+    Scanner numbin = new Scanner(System.in);  
+
+    
     Ciudad(){
+        
         Punto punto=new Punto();
         posicion=punto;
         etiqueta="0";
     }
+    
     Ciudad(String nombre,Punto punto){
+        
         this.etiqueta=nombre;
         this.posicion=punto;
     
     }
     
     void LeeCiudad(){
+        
         posicion.LeePunto();
         System.out.println("Introduce el nombre de la ciudad");
         etiqueta=numbin.next();     
     }
     
     void EscribeCiudad(){
+        
         posicion.EscribePunto();
         System.out.println("  "+etiqueta);
     }
     
+    Punto getPosicion(){
+        
+        return posicion;
+    }
 }

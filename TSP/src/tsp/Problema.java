@@ -4,44 +4,122 @@
  * and open the template in the editor.
  */
 package tsp;
+import java.util.ArrayList;
+import java.util.Scanner;
+import static java.lang.Math.*;
 
 /**
  *
  * @author Juanma
  */
 public class Problema {
-    	private Ciudad[] listaCiudades;
+    // 	private static Ciudad[] listaCiudades;
+        private static ArrayList<Ciudad> listaCiudades = new ArrayList<>();
 	private double[][] distancia;
-
-	public Problema(int n){
-
-	//	bla bla bla
+        private static int nCiudades;
+        
+        
+	public Problema(int n,ArrayList<Ciudad> vCities, double[][] vDist){
+            nCiudades=n;
+            listaCiudades=vCities;
+       //     listaCiudades=vCities;
+            distancia=vDist;  
 	}
 
-	public static Problema leerCiudades(scanner sc){
+	public static Problema leerCiudades(Scanner sc){
 		String etiqueta;
+                ArrayList<Ciudad> vCities = new ArrayList<>();
 		double x,y;
-
-
+                
 		sc.next();// esto hace que nos lea hasta el espacio en blanco.
-		var= sc.nexInt;
-		for(int i= 0;i<var;i++){
-			etiqueta=sc.next();
-			x=sc.nextDouble();
-			y=sc.nextDouble();
-			ciudad=new Ciudad(eqtiqueta,x,y);// cambiar x e y a punto
-			analdirCiudad(ciudad);
-
+		nCiudades = sc.nextInt();
+      //          vCities=new Ciudad[nCiudades];     
+                
+		for(int i= 0;i<nCiudades;i++){
+                    
+                    etiqueta=sc.next();
+                    x=sc.nextDouble();
+                    y=sc.nextDouble();
+                    Punto posicion = new Punto(x,y); 
+                    Ciudad ciudad =new Ciudad(etiqueta,posicion);
+                    //listaCiudades[i]=ciudad;
+                    vCities.add(ciudad);
 		}
+                
+                Problema problema=new Problema(nCiudades,vCities,null);
+                
+                return problema;
 	}
         
-        int getCiudadMasCercana(int posCiudad, Boolean[] visitados){
-    
-   // viitado es aun array que contiene las posciones de las ciudades visitadas
-       //     un uno si la has visitado y un 0 si no la has visitado
-    
-    return 1;
+	public double getDistancia(int pos1, int pos2){
+            
+            double dist;
+            Ciudad ciudadAux1 = new Ciudad();
+            Ciudad ciudadAux2 = new Ciudad();
+	 	
+            ciudadAux1= listaCiudades.get(pos1);
+            ciudadAux2= listaCiudades.get(pos2);
+		
+            dist= ciudadAux1.getPosicion().CalcDistEuclid(ciudadAux2.getPosicion().ObtieneCoordenada_x(),ciudadAux2.getPosicion().ObtieneCoordenada_y());
+		
+            return dist;
+	}
+        
+        public int getCiudadMasCercana(int posCiudad, Boolean[] visitados){
+        // viitado es aun array que contiene las posciones de las ciudades visitadas
+        //     un uno si la has visitado y un 0 si no la has visitado
+        // posCiudad es la posicion de la ciudad desde la que busco alternaivas
+        // devolvemos la posicion de la ciudad más cercana
+            double []dist = null;
+            int cityCloser=0;
+            int contador=0;
+            
+            Ciudad ciudadActual = new Ciudad();
+            Ciudad ciudadAux = new Ciudad();
+            
+            ciudadActual=listaCiudades.get(posCiudad);
+
+            for (int i=0;i<listaCiudades.size();i++){
+                
+                    if(visitados[i]==false){
+                        
+                        ciudadAux=listaCiudades.get(i);
+                        dist[i]= ciudadActual.getPosicion().CalcDistEuclid(ciudadAux.getPosicion().ObtieneCoordenada_x(),ciudadAux.getPosicion().ObtieneCoordenada_y());
+                    }
+                    else{
+                        dist[i]=-1;
+                    }
+            }
+            
+            double minDist=dist[0];
+            
+            
+            // Obtengo el mínimo
+            for (int j=1;j<dist.length;j++){
+                
+                if(dist[j]>0 && dist[j]<minDist){
+                    
+                    minDist=dist[j];
+                    cityCloser=j; 
+                }
+            }
+            
+        return cityCloser;
     }
-    
-    
+        
+
+        public static Ciudad getCiudad(int pos){
+        
+            return listaCiudades.get(pos);
+        }
+        
+        public static int getNumeroCiudades(){
+            
+            int nCities=listaCiudades.size();
+            return nCities;
+        }
+        
+        public double coste(Ruta ruta){
+            return 9.9;
+        }
 }
