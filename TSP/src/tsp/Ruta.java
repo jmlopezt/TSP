@@ -14,15 +14,15 @@ import java.util.ArrayList;
 public class Ruta {
     // este metodo devuelve la ruta calculada ya, pero no el string;n sino su posicion en el vector listaciudades.
     private int nCiudadesVisitadas;
-    private static ArrayList<Integer> rutaCiudades = new ArrayList<>();
+    private ArrayList<Integer> rutaCiudades = new ArrayList<>();
     
     
-    Ruta(int n){
-
-        nCiudadesVisitadas=0;
+    Ruta(int ntotalCiudades){
+        ArrayList<Integer> rutaCiudades = new ArrayList<>();
+        nCiudadesVisitadas=ntotalCiudades;
     }
     
-    void addCiudad (int pos){
+    public void addCiudad (int pos){
         
         rutaCiudades.add(pos);
     }
@@ -32,7 +32,7 @@ public class Ruta {
         return rutaCiudades;
     }
    
-    int getNumberCiudadesVisitadas(){    
+    public int getNumberCiudadesVisitadas(){    
         
         return rutaCiudades.size();
     }   

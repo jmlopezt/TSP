@@ -119,7 +119,21 @@ public class Problema {
             return nCities;
         }
         
+
         public double coste(Ruta ruta){
-            return 9.9;
+            Double coste=0.0;
+            Ciudad ciudadAux = new Ciudad();
+            Ciudad ciudadAnterior = new Ciudad();
+            
+            ciudadAnterior=listaCiudades.get(0);
+            
+            for (int i=1;i<ruta.getNumberCiudadesVisitadas();i++){
+                int pos=(Integer)(ruta.getRuta().get(i));
+                ciudadAux=listaCiudades.get(pos);
+                coste+=ciudadAux.getPosicion().CalcDistEuclid(ciudadAnterior.getPosicion().ObtieneCoordenada_x(), ciudadAnterior.getPosicion().ObtieneCoordenada_y());
+                ciudadAnterior=ciudadAux;
+            }
+           
+            return coste;
         }
 }
