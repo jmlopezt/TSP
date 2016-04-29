@@ -16,6 +16,16 @@ public class TSP {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Ruta ruta=new Ruta();
+        HeuristicaVecinoMasCercano solucionHeuristica = new HeuristicaVecinoMasCercano();
+        Problema problema=new Problema();
+        problema.leerCiudades();
+        solucionHeuristica = HeuristicaVecinoMasCercano(problema);
+        ruta = solucionHeuristica.obtenerMejorRuta();
+        double coste;
+        ruta.coste();
+
+
     }
     
 }
