@@ -16,9 +16,9 @@ public class TSP {
      */
     public static void main(String[] args) {
         // 
-        Ruta ruta=new Ruta();
-        HeuristicaVecinoMasCercano solucionHeuristica = new HeuristicaVecinoMasCercano();
-        Problema problema=new Problema();
+        Ruta ruta=new Ruta(0);
+        HeuristicaVecinoMasCercano solucionHeuristica = new HeuristicaVecinoMasCercano(null);
+        Problema problema=new Problema(0,null,null);
         problema.leerCiudades();
         solucionHeuristica = HeuristicaVecinoMasCercano(problema);
         ruta = solucionHeuristica.obtenerMejorRuta();
