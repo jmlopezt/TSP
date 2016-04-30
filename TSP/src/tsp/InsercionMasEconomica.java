@@ -1,17 +1,17 @@
-//Visualizacion grafica de la solucion
-
-// MEJORAS PROPUESTAS
-
-//1. Estrategias de insercion
 
 public class InsercionMasEconomica{
-	private Ruta ruta;
+	private Ruta rutaMasEconomica;
+	private Problema problema;
 	//Hay que obtener una ruta inicial que es la siguiente: coordY mayor--coordX mayor--coordX menor
+	public InsercionMasEconomica(Problema p){
+		problema = p;
+	}
 	
 	public Ruta obtenerRutaInicial(ArrayList ciudades){
 		Ruta ordenViaje = new Ruta();
 		int yMax,xMax,xMin;
 		int pos1,pos2,pos3;
+		
 		yMax=0;
 		xMax=0;
 		xMin=0;
