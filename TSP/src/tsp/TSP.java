@@ -15,7 +15,7 @@ public class TSP {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        // 
         Ruta ruta=new Ruta();
         HeuristicaVecinoMasCercano solucionHeuristica = new HeuristicaVecinoMasCercano();
         Problema problema=new Problema();
