@@ -12,8 +12,10 @@ import static java.lang.Math.*;
  *
  * @author Juanma
  */
+
 public class Problema {
     // 	private static Ciudad[] listaCiudades;
+
         private static ArrayList<Ciudad> listaCiudades = new ArrayList<>();
 	private double[][] distancia;
         private static int nCiudades;
@@ -50,7 +52,7 @@ public class Problema {
                 
                 return problema;
 	}
-        
+      
 	public double getDistancia(int pos1, int pos2){
             
             double dist;
@@ -66,7 +68,7 @@ public class Problema {
 	}
         
         public int getCiudadMasCercana(int posCiudad, Boolean[] visitados){
-        // viitado es aun array que contiene las posciones de las ciudades visitadas
+        // visitado es aun array que contiene las posciones de las ciudades visitadas
         //     un uno si la has visitado y un 0 si no la has visitado
         // posCiudad es la posicion de la ciudad desde la que busco alternaivas
         // devolvemos la posicion de la ciudad más cercana

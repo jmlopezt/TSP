@@ -1,4 +1,5 @@
-
+package tsp;
+import java.util.ArrayList;
 public class InsercionMasEconomica{
 	private Ruta ordenViaje;
 	private Problema problema;
@@ -7,14 +8,10 @@ public class InsercionMasEconomica{
 		problema = p;
 	}
 
-	public Ruta obtenerRutaInicial(ArrayList ciudades){
-		Ruta ordenViaje = new Ruta();
+	public Ruta obtenerRutaInicial(ArrayList<Ciudad> ciudades){
+		Ruta ordenViaje = new Ruta(ciudades.size());
 		int yMax,xMax,xMin;
-		int pos1,pos2,pos3;
-		
-		yMax=0;
-		xMax=0;
-		xMin=0;
+		int pos1=0,pos2=0,pos3=0;
 		//Buscamos la coordenada Y mayor.
 		for (int i=0;i<ciudades.size()-2;i++){
 			if(ciudades.get(i).getPosicion.obtenerY()>ciudades.get(i+1).getPosicion.obtenerY()){
@@ -36,34 +33,28 @@ public class InsercionMasEconomica{
 				pos3=k;
 			}
 		}
-		ordenViaje.add(pos1);
-		ordenViaje.add(pos2);
-		ordenViaje.add(pos3);
+		ordenViaje.addCiudad(pos1);
+		ordenViaje.addCiudad(pos2);
+		ordenViaje.addCiudad(pos3);
 		
 		return ordenViaje;
 	}
 	
-	public Ruta obtenerRutaEconomica(ArrayList ciudades){
+	public Ruta obtenerRutaEconomica(ArrayList<Ciudad> ciudades){
 		//rutaInicial=ordenViaje (el triangulo calculado anteriormente)
-		Ruta rutaInicial = new Ruta();
-		Ruta rutaFinal = new Ruta();
-		Ruta rutaAux = new Ruta();
+		Ruta rutaInicial = new Ruta(0);
+		Ruta rutaFinal = new Ruta(0);
+		Ruta rutaAux = new Ruta(0);
 		rutaInicial=obtenerRutaInicial(ciudades);
-		
-		//creamos una ruta auxiliar con las ciudades no pertenecientes a la ruta inicial
-		rutaAux=obtenerMejorRuta(ArrayList ciudades);
-		//a esta ruta auxiliar hay que quitarle las ciudades que pertenecen a la ruta inicial
-		for (int i=0;i<rutaInicial.size(); i++){
-			rutaAux.remove(rutaInicial.get(i));
-		}
-		//Por ultimo, "unimos" ruta inicial con la auxiliar
-		for (int j=0;j<rutaInicial.size(); j++){
-			rutaFinal.add(rutaInicial.get(j));
-		} 
-		for (int k=rutaInicial.size();k<rutaInicial.size()+rutaAux.size()-1; i++){
-			rutaFinal.add(rutaAux.get(k));
-		}
-		return rutaFinal;
+                Boolean[] visitados = new Boolean[ciudades.size()];
+                //Ahora ponemos la ciudades visitadas, las de la ruta inicial
+                visitados[rutaInicial.getRuta().get(1)]=true;
+                //En los corchetes quiero poner las ciudades que pertenecen a la
+                //ruta inicial pero me da error
+            
+                //Una vez que se han puesto las ciudades visitadas creo que se
+                //hace la heuristicavecinomascercano
+           
 	}
 }
 

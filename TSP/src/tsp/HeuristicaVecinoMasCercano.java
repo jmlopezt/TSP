@@ -20,7 +20,7 @@ public class HeuristicaVecinoMasCercano {
         
         problema=p;
     }
-    
+
     public Ruta obtenerMejorRuta(ArrayList<Ciudad> ciudades){
         
         Boolean[] visitados;

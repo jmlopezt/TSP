@@ -21,7 +21,7 @@ public class Ruta {
         ArrayList<Integer> rutaCiudades = new ArrayList<>();
         nCiudadesVisitadas=ntotalCiudades;
     }
-    
+ 
     public void addCiudad (int pos){
         
         rutaCiudades.add(pos);
