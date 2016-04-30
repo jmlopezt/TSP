@@ -1,12 +1,12 @@
 
 public class InsercionMasEconomica{
-	private Ruta rutaMasEconomica;
+	private Ruta ordenViaje;
 	private Problema problema;
 	//Hay que obtener una ruta inicial que es la siguiente: coordY mayor--coordX mayor--coordX menor
 	public InsercionMasEconomica(Problema p){
 		problema = p;
 	}
-	
+
 	public Ruta obtenerRutaInicial(ArrayList ciudades){
 		Ruta ordenViaje = new Ruta();
 		int yMax,xMax,xMin;
@@ -65,7 +65,5 @@ public class InsercionMasEconomica{
 		}
 		return rutaFinal;
 	}
-	
-	
 }
 
