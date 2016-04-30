@@ -1,9 +1,13 @@
 /*
-/* ************ Juan Manuel López Torralba *******************
- * 4º Curso Grado Ingeniería de Tecnología de Telecomunicación
- * Especialidad: Sistemas de Telecomunicación
- * Asignatura: CP (Complementos de Programación)
- * Optativa Telemática
+***************************************************************
+ ************** Juan Manuel López Torralba ********************
+ ************** Santiago Juárez Rodríguez *********************
+ **************************************************************
+ * 4ºCurso Grado Ingeniería de Tecnología de Telecomunicación *
+ * ******** Especialidad: Sistemas de Telecomunicación ********
+ ********* Asignatura: CP (Complementos de Programación) ******
+ ***************** Optativa Telemática ************************
+ **************************************************************
  */
 
 
@@ -12,6 +16,7 @@ package tsp;
 import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 import java.util.*;
+
 /**
  *La clase punto representa las coordenadas en 2D de un punto:
  * las coordenadas x e y.

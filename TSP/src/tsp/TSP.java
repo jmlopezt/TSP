@@ -1,7 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+***************************************************************
+ ************** Juan Manuel López Torralba ********************
+ ************** Santiago Juárez Rodríguez *********************
+ **************************************************************
+ * 4ºCurso Grado Ingeniería de Tecnología de Telecomunicación *
+ * ******** Especialidad: Sistemas de Telecomunicación ********
+ ********* Asignatura: CP (Complementos de Programación) ******
+ ***************** Optativa Telemática ************************
+ **************************************************************
  */
 package tsp;
 

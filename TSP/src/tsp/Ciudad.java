@@ -1,3 +1,15 @@
+/*
+***************************************************************
+ ************** Juan Manuel López Torralba ********************
+ ************** Santiago Juárez Rodríguez *********************
+ **************************************************************
+ * 4ºCurso Grado Ingeniería de Tecnología de Telecomunicación *
+ * ******** Especialidad: Sistemas de Telecomunicación ********
+ ********* Asignatura: CP (Complementos de Programación) ******
+ ***************** Optativa Telemática ************************
+ **************************************************************
+ */
+
 package tsp;
 
 import java.util.InputMismatchException;

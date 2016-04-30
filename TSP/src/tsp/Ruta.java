@@ -1,37 +1,68 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+***************************************************************
+ ************** Juan Manuel López Torralba ********************
+ ************** Santiago Juárez Rodríguez *********************
+ **************************************************************
+ * 4ºCurso Grado Ingeniería de Tecnología de Telecomunicación *
+ * ******** Especialidad: Sistemas de Telecomunicación ********
+ ********* Asignatura: CP (Complementos de Programación) ******
+ ***************** Optativa Telemática ************************
+ **************************************************************
  */
+
 package tsp;
 
 import java.util.ArrayList;
 
 /**
- *
- * @author Juanma
+ * Esta clase da lugar a objetos ArrayList<Integer> rutaCiudades, los cuales
+ * contienen la Ruta ya ordenada.
+ * Contienen la posición de las ciudades, ordenada con respecto al vector 
+ * donde se almacena la lista de ciudades.
+ * 
+ * @author Juan Manuel López Torralba - Santiago Juárez Rodríguez
  */
 public class Ruta {
-    // este metodo devuelve la ruta calculada ya, pero no el string;n sino su posicion en el vector listaciudades.
+  
     private int nCiudadesVisitadas;
     private ArrayList<Integer> rutaCiudades = new ArrayList<>();
     
     
+    /**
+    * Constructor de la clase Ruta
+    * @param ntotalCiudades numero de Ciudades que contendrá la ruta.
+    */
     Ruta(int ntotalCiudades){
+        
         ArrayList<Integer> rutaCiudades = new ArrayList<>();
         nCiudadesVisitadas=ntotalCiudades;
     }
  
+    
+    /**
+     * Este método añade una ciudad a la ruta.
+     * @param pos Indica la posición de dicha ciudad con respecto
+     * al vector donde se almacenan las ciudades.
+     */
     public void addCiudad (int pos){
         
         rutaCiudades.add(pos);
     }
     
+    /**
+     * Método que devuelve una ruta de tipo ArrayList 
+     * @return rutaCiudades
+     */
     public ArrayList getRuta(){
 
         return rutaCiudades;
     }
    
+    /**
+     * Método que devuelve el número de ciudades visitadas
+     * en el instante de consulta.
+     * @return rutaCiudades.size() 
+     */
     public int getNumberCiudadesVisitadas(){    
         
         return rutaCiudades.size();
