@@ -23,9 +23,7 @@ public class TSP {
         solucionHeuristica = HeuristicaVecinoMasCercano(problema);
         ruta = solucionHeuristica.obtenerMejorRuta();
         double coste;
-        ruta.coste();
-
-
+        coste = problema.coste(ruta);
     }
     
 }
