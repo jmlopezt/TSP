@@ -5,6 +5,8 @@
  */
 package tsp;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Juanma
@@ -17,10 +19,10 @@ public class TSP {
     public static void main(String[] args) {
         // 
         Ruta ruta=new Ruta(0);
-        HeuristicaVecinoMasCercano solucionHeuristica = new HeuristicaVecinoMasCercano(null);
+        Scanner sc = null;
         Problema problema=new Problema(0,null,null);
-        problema.leerCiudades();
-        solucionHeuristica = HeuristicaVecinoMasCercano(problema);
+        problema.leerCiudades(sc);
+        HeuristicaVecinoMasCercano solucionHeuristica = new HeuristicaVecinoMasCercano(problema);
         ruta = solucionHeuristica.obtenerMejorRuta();
         double coste;
         coste = problema.coste(ruta);
