@@ -12,6 +12,7 @@
 package tsp;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Esta clase implementa distintos algoritmos para resolver la ruta
@@ -114,26 +115,212 @@ public class Heuristica {
 	return ordenViaje;
     }
     
-    public Ruta obtenerRutaEconomica(Problema problema){
+    public Ruta insercionEconomica(Problema problema){
+        
+        int nCiudades=problema.getNumeroCiudades();
+        int anteriorCiudad;
+        
+        Ciudad ciudadInicial = new Ciudad();
+        Ciudad ciudadAux = new Ciudad();     
         
         ArrayList<Ciudad> listaCiudadesAux = new ArrayList<>();
+        
         listaCiudadesAux=problema.getListaCiudades();
         
-        Boolean[] visitados = new Boolean[listaCiudadesAux.size()];
+        Boolean[] visitados = new Boolean[nCiudades];
         
         Ruta rutaInicial = new Ruta(0);
         Ruta rutaAux = new Ruta(0);
-	Ruta rutaFinal = new Ruta(listaCiudadesAux.size());
+	Ruta rutaFinal = new Ruta(nCiudades);
         
 		//rutaInicial=ordenViaje (el triangulo calculado anteriormente)
 	rutaInicial=obtenerRutaInicial(problema);
+                // Registramos el triangulo inicial en el booleano visitados
         for (int i=0;i<2;i++){
+            
             visitados[(Integer)rutaInicial.getRuta().get(i)]=true;  
         }
-                //Una vez que se han puesto las ciudades visitadas creo que se
-                //hace la heuristicavecinomascercano
-          return rutaFinal; 
+                // Ahora elegímos qué ciudad insertar y dónde hacerlo
+            
+                // Lo que voy a hacer es una especia de Algoritmo de Lloyd-Max.
+                // La ruta inicial tiene un ruta preestablecida por defecto que
+                // corresponde con el triuangulo de mayor extensión.
+                // Por lo tanto comenzando con la posición 1, inamovible que es
+                // la ciudad más alta (coordenada y mayor), obtengo aquella ciudad
+                // no vistada cuya distancia euclidea es menor que la del triangulo
+                // inicial
+        ciudadInicial=listaCiudadesAux.get(0);
+        rutaAux=rutaInicial;
+        
+        int indexOfCityRef=1;
+        
+        for(int count=0;count<rutaInicial.getNumberCiudadesVisitadas();count++){
+            
+            for (int i=0;i<nCiudades;i++){
+            
+                ciudadInicial=listaCiudadesAux.get(i);
+                double dist=0.0;
+                if(visitados[i]==true){
+            
+                    int cityCloserAux=problema.getCiudadMasCercana(i, visitados);
+                    ciudadAux=listaCiudadesAux.get(cityCloserAux);
+                    dist=ciudadInicial.calculaDistancia(ciudadAux);
+                    
+                    if(dist<ciudadInicial.calculaDistancia(listaCiudadesAux.get(rutaInicial.getPosCiudad(indexOfCityRef)))){
+                        
+                        if(visitados[cityCloserAux]==false){
+                            rutaAux.addCiudadInLocation(i+1, cityCloserAux);
+                            visitados[(Integer)rutaAux.getRuta().get(i+1)]=true;  
+                        }
+                    }
+                }
+             
+            }
+            indexOfCityRef++;
+            if(indexOfCityRef==3){
+                
+                indexOfCityRef=0;
+            }
+        }
+            rutaFinal=rutaAux;
+            return rutaFinal; 
 	}
 
+    public Ruta insercionLejana (Problema problema){
+        
+        int nCiudades=problema.getNumeroCiudades();
+        
+        Ciudad ciudadInicial = new Ciudad();
+        Ciudad ciudadAux = new Ciudad();     
+        
+        ArrayList<Ciudad> listaCiudadesAux = new ArrayList<>();
+        
+        listaCiudadesAux=problema.getListaCiudades();
+        
+        Boolean[] visitados = new Boolean[nCiudades];
+        
+        Ruta rutaInicial = new Ruta(0);
+        Ruta rutaAux = new Ruta(0);
+	Ruta rutaFinal = new Ruta(nCiudades);
+        
+		//rutaInicial=ordenViaje (el triangulo calculado anteriormente)
+	rutaInicial=obtenerRutaInicial(problema);
+                // Registramos el triangulo inicial en el booleano visitados
+        for (int i=0;i<2;i++){
+            
+            visitados[(Integer)rutaInicial.getRuta().get(i)]=true;  
+        }
+                // Ahora elegímos qué ciudad insertar y dónde hacerlo
+
+        ciudadInicial=listaCiudadesAux.get(0);
+        rutaAux=rutaInicial;
+        
+        int indexOfCityRef=1;
+        
+        for(int count=0;count<rutaInicial.getNumberCiudadesVisitadas();count++){
+            
+            for (int i=0;i<nCiudades;i++){
+            
+                ciudadInicial=listaCiudadesAux.get(i);
+                double dist=0.0;
+                if(visitados[i]==true){
+            
+                    int cityCloserAux=problema.getCiudadMasCercana(i, visitados);
+                    ciudadAux=listaCiudadesAux.get(cityCloserAux);
+                    dist=ciudadInicial.calculaDistancia(ciudadAux);
+                    
+                    if(dist>ciudadInicial.calculaDistancia(listaCiudadesAux.get(rutaInicial.getPosCiudad(indexOfCityRef)))){
+                        
+                        if(visitados[cityCloserAux]==false){
+                            rutaAux.addCiudadInLocation(i+1, cityCloserAux);
+                            visitados[(Integer)rutaAux.getRuta().get(i+1)]=true;  
+                        }
+                    }
+                }
+             
+            }
+            indexOfCityRef++;
+            if(indexOfCityRef==3){
+                
+                indexOfCityRef=0;
+            }
+        }
+            rutaFinal=rutaAux;
+
+        return rutaFinal;
+    }
+    
+    public Ruta obtenerRutaAlgoritmo4 (Problema problema){
+        
+        int nCiudades=problema.getNumeroCiudades();
+        int k=10000;
+        Ruta rutaActual = new Ruta(nCiudades);
+       
+        //Ruta inicial
+        for (int i=0; i<nCiudades; i++){
+            rutaActual.addCiudad(i);
+        }
+        
+        //Hay que crear k rutas aleatorias
+        for (int i=0; i<k; i++){
+            Collections.shuffle(rutaActual.getRuta()); //Obtenemos una ruta aleatoria con shuffle
+
+            if (problema.coste(mejorRuta)<problema.coste(rutaActual)){
+                
+                mejorRuta=rutaActual;
+            }
+
+        }
+        return mejorRuta;
+
+    }
+    
+    public Ruta obtenerRutaAlgoritmo5 (Problema problema){
+        
+        int contadorNoMejora = 0;
+        int nIteraciones=100;
+        int nCiudades=problema.getNumeroCiudades();
+        int k=10000;
+        Ruta rutaActual = new Ruta(nCiudades);
+       
+        //Ruta inicial
+        for (int i=0; i<nCiudades; i++){
+            rutaActual.addCiudad(i);
+        }
+
+        Collections.shuffle(rutaActual.getRuta());
+        mejorRuta =rutaActual;
+        do{
+            Collections.shuffle(rutaActual.getRuta());
+            mejorarLocalmente(rutaActual);
+        if (problema.coste(rutaActual) < problema.coste(mejorRuta)) {
+            mejorRuta =rutaActual;
+            contadorNoMejora = 0;
+        }
+        else{
+            contadorNoMejora++;
+        }
+        }while (contadorNoMejora < nIteraciones);
+        
+        return mejorRuta;
+    }
+    
+    public Ruta mejorarLocalmente (Ruta ruta){
+        
+        Ruta rutaAux=new Ruta(ruta.getNumberCiudadesVisitadas());
+        rutaAux=ruta;
+        
+        for (int i=0;i<ruta.getRuta().size();i++){
+            int j=i+2;
+            rutaAux.getRuta().add(i+1, ruta.getRuta().get(j));
+            rutaAux.getRuta().remove(j);
+            if (problema.coste(rutaAux) < problema.coste(mejorRuta)) {
+            
+                    ruta =rutaAux;
+            }
+        }
+    
+        return ruta;
+    }
 }
 

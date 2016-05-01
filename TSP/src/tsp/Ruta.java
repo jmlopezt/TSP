@@ -49,6 +49,17 @@ public class Ruta {
         rutaCiudades.add(pos);
     }
     
+     /**
+     * Este método añade una ciudad a la ruta.en la posición n de la ruta
+     * @param pos Indica la posición de dicha ciudad con respecto
+     * al vector donde se almacenan las ciudades.
+     */
+    public void addCiudadInLocation (int n, int pos){
+        
+        rutaCiudades.add(n,pos);
+    }
+    
+    
     /**
      * Método que devuelve una ruta de tipo ArrayList 
      * @return rutaCiudades
@@ -66,6 +77,17 @@ public class Ruta {
     public int getNumberCiudadesVisitadas(){    
         
         return rutaCiudades.size();
-    }   
+    }
+    
+    /**
+     * Este método indica para una posición dada de la ciudad en
+     * la lista de ciudades leída, su posición en la ruta.
+     * @param pos posición de la ciudad en la lista inicial
+     * @return su posición en la ruta
+     */
+    public int getPosCiudad(int pos){
+    
+        return rutaCiudades.get(pos);
+    }
 
 }

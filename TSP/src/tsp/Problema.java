@@ -18,6 +18,7 @@ import java.util.Scanner;
  * Esta Clase contiene los datos relevantes para la resolucion de la ruta, los cuales se exportaran a la clase Ruta 
  * mediante un objeto problema exportado de esta clase. Contiene datos como el numero de ciudades, un vector 
  * de tipo ArrayList<Ciudad> con las ciudades a visitar, y una matriz de Distancias entre las ciudades.
+ * 
  * @author Juan Manuel López Torralba - Santiago Juárez Rodríguez
  */
 public class Problema {
@@ -125,7 +126,7 @@ public class Problema {
         return listaCiudades.get(pos);
     }
         
-    public static int getNumeroCiudades(){
+    public int getNumeroCiudades(){
             
         int nCities=listaCiudades.size();
         return nCities;

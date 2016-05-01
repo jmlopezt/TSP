@@ -60,8 +60,34 @@ public class Ciudad {
         System.out.println("  "+etiqueta);
     }
     
+    
     Punto getPosicion(){
         
         return posicion;
     }
+    /**
+    * 
+    * @param ciudad Objeto Ciudad 
+    * @return  Devuelve la distancia entre dos ciudades, por ejemplo distancia=Ciudad1.calculaDistancia(Ciudad2) -Double
+    */
+    public double calculaDistancia(Ciudad ciudad){
+        double dist=0;
+        dist=Math.sqrt(Math.pow(getPosicion().ObtieneCoordenada_x()-ciudad.getPosicion().ObtieneCoordenada_x(), 2) + Math.pow(getPosicion().ObtieneCoordenada_y()-ciudad.getPosicion().ObtieneCoordenada_y(), 2));
+        
+        return dist;  
+    }
+    
+    
+    public double calcCosteInsercion( Ciudad b, Ciudad c){
+
+        double distanciaAB,distanciaBC,distanciaAC;
+        distanciaAB=calculaDistancia(b);
+        distanciaBC=b.calculaDistancia(c);
+        distanciaAC=calculaDistancia(c);
+
+        return (distanciaAC+distanciaBC-distanciaAB);
+
+    }
+    
+    
 }

@@ -14,8 +14,16 @@ package tsp;
 import java.util.Scanner;
 
 /**
- *
- * @author Juanma
+ * Esta clase es la encargada de ejecutar los diferentes metodos de las otras 
+ * clases para mostrar una solucion final.
+ * Dependiendo de los argumentos de entrada, se mostrarán cierta informaciones
+ * de la ruta o ejecutará un determinado algoritmo. 
+ * 
+ * Para más información, consultar la documentación disponible en el documento
+ * "Manual de usuario".
+ * 
+ * @author Juan Manuel López Torralba - Santiago Juárez Rodríguez
+ * 
  */
 public class TSP {
 
@@ -24,9 +32,14 @@ public class TSP {
      */
     public static void main(String[] args) {
         // 
-        Ruta ruta=new Ruta(0);
+        Problema problema;
+        Ruta mejorRuta;
+        boolean solución=false;
+        boolean ruta=false;
+        boolean coste=false;
+        int algo=1;
+        
         Scanner sc = null;
-        Problema problema=new Problema(0,null,null);
         problema.leerCiudades(sc);
         Heuristica solucionHeuristica = new Heuristica(problema);
         ruta = solucionHeuristica.obtenerMejorRuta();
