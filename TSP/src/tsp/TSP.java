@@ -28,7 +28,7 @@ public class TSP {
         Scanner sc = null;
         Problema problema=new Problema(0,null,null);
         problema.leerCiudades(sc);
-        HeuristicaVecinoMasCercano solucionHeuristica = new HeuristicaVecinoMasCercano(problema);
+        Heuristica solucionHeuristica = new Heuristica(problema);
         ruta = solucionHeuristica.obtenerMejorRuta();
         double coste;
         coste = problema.coste(ruta);

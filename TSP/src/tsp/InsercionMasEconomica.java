@@ -6,7 +6,8 @@ public class InsercionMasEconomica{
 	private Ruta ordenViaje;
 	private Problema problema;
 	//Hay que obtener una ruta inicial que es la siguiente: coordY mayor--coordX mayor--coordX menor
-	public InsercionMasEconomica(Problema p){
+	
+        public InsercionMasEconomica(Problema p){
 		problema = p;
 	}
 
@@ -50,7 +51,7 @@ public class InsercionMasEconomica{
 		rutaInicial=obtenerRutaInicial(ciudades);
                 Boolean[] visitados = new Boolean[ciudades.size()];
                 //Ahora ponemos la ciudades visitadas, las de la ruta inicial
-                visitados[rutaInicial.getRuta().get(1)]=true;
+                visitados[(Integer)rutaInicial.getRuta().get(1)]=true;
                 //En los corchetes quiero poner las ciudades que pertenecen a la
                 //ruta inicial pero me da error
             

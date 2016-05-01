@@ -148,4 +148,14 @@ public class Problema {
            
         return coste;
     }
+    
+    /**
+     * Este método devuelve la lista de las ciudades que
+     * forma la ruta a resolver
+     * @return listaCiudades
+     */
+    public ArrayList<Ciudad> getListaCiudades(){
+    
+        return listaCiudades;
+    }
 }
