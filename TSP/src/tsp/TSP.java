@@ -32,19 +32,35 @@ public class TSP {
      */
     public static void main(String[] args) {
         // 
-        Problema problema;
-        Ruta mejorRuta;
+        Problema problema = new Problema(0,null,null);
+        Ruta mejorRuta = new Ruta(0);
         boolean solución=false;
-        boolean ruta=false;
-        boolean coste=false;
+        //boolean ruta=false;
+        //boolean coste=false;
         int algo=1;
         
         Scanner sc = null;
         problema.leerCiudades(sc);
-        Heuristica solucionHeuristica = new Heuristica(problema);
-        ruta = solucionHeuristica.obtenerMejorRuta();
+        Heuristica solucionHeuristica = new Heuristica(null);
+        if (algo==1) {
+            mejorRuta = solucionHeuristica.obtenerRutaAlgoritmo1(problema);
+        }
+        if (algo==2){
+            mejorRuta = solucionHeuristica.insercionEconomica(problema);
+        }
+        if (algo==3){
+            mejorRuta = solucionHeuristica.insercionLejana(problema);
+        }
+        if (algo==4){
+            mejorRuta = solucionHeuristica.obtenerRutaAlgoritmo4(problema);
+        }
+        if (algo==5){
+            mejorRuta = solucionHeuristica.obtenerRutaAlgoritmo5(problema);
+        }
+        
+        
         double coste;
-        coste = problema.coste(ruta);
+        coste = problema.coste(mejorRuta);
     }
     
 }
