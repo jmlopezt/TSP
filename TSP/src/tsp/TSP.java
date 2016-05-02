@@ -39,7 +39,7 @@ public class TSP {
         //boolean coste=false;
         int algo=1;
         
-        Scanner sc = null;
+        Scanner sc = new Scanner(System.in);
         problema.leerCiudades(sc);
         Heuristica solucionHeuristica = new Heuristica(null);
         if (algo==1) {
