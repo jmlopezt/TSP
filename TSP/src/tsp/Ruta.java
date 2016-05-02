@@ -90,4 +90,16 @@ public class Ruta {
         return rutaCiudades.get(pos);
     }
 
+    /**
+     * Muestra por pantalla las etiquetas de las ciudades de una ruta. 
+     * Ej: Ruta1.muestraruta();
+     */
+    void muestraruta(){
+        
+        for(int i=0;i<nCiudadesVisitadas;i++){  
+            
+            System.out.println(rutaCiudades.get(i));   
+        }
+    }
+    
 }

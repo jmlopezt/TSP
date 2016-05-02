@@ -31,36 +31,79 @@ public class TSP {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // 
-        Problema problema = new Problema(0,null,null);
-        Ruta mejorRuta = new Ruta(0);
-        boolean solución=false;
-        //boolean ruta=false;
-        //boolean coste=false;
-        int algo=1;
+        
+        Ruta ruta=null;
+        Heuristica Heuristica=new Heuristica();
+        Problema problema=new Problema();
+ 
+        boolean argsolucion=false,argruta=false,argcoste=false,argAlg1=false,argAlg2=false,argAlg3=false
+                ,argAlg4=false,argAlg5=false;
+
+        long time_start, time_end;
         
         Scanner sc = new Scanner(System.in);
         problema.leerCiudades(sc);
-        Heuristica solucionHeuristica = new Heuristica(null);
-        if (algo==1) {
-            mejorRuta = solucionHeuristica.obtenerRutaAlgoritmo1(problema);
-        }
-        if (algo==2){
-            mejorRuta = solucionHeuristica.insercionEconomica(problema);
-        }
-        if (algo==3){
-            mejorRuta = solucionHeuristica.insercionLejana(problema);
-        }
-        if (algo==4){
-            mejorRuta = solucionHeuristica.obtenerRutaAlgoritmo4(problema);
-        }
-        if (algo==5){
-            mejorRuta = solucionHeuristica.obtenerRutaAlgoritmo5(problema);
-        }
         
-        
-        double coste;
-        coste = problema.coste(mejorRuta);
+        for (int i=0; i<args.length;i++){
+            
+            if(args[i].equals("solucion")){
+                argsolucion=true;
+            }		
+            if(args[i].equals("ruta")){
+                argruta=true;
+            }		
+            if(args[i].equals("coste")){
+                argcoste=true;			
+            }
+                if(args[i].equals("solAlg1")){
+                    argAlg1=true;			
+                }
+                if(args[i].equals("solAlg2")){
+                    argAlg2=true;			
+                }
+                if(args[i].equals("solAlg3")){
+                    argAlg3=true;			
+                }
+                if(args[i].equals("solAlg4")){
+                    argAlg4=true;			
+                }
+            
+        }
+        time_start=System.currentTimeMillis();     
+
+            if (argAlg1) {
+                ruta = Heuristica.obtenerRutaAlgoritmo1(problema);
+            }
+            if (argAlg2){
+                ruta = Heuristica.insercionEconomica(problema);
+            }
+            if (argAlg3){
+                ruta = Heuristica.insercionLejana(problema);
+            }
+            if (argAlg4){
+                ruta = Heuristica.obtenerRutaAlgoritmo4(problema);
+               }
+            if (argAlg5){
+                ruta = Heuristica.obtenerRutaAlgoritmo5(problema);
+            }
+           
+        time_end=System.currentTimeMillis(); 
+
+     //   coste = problema.coste(mejorRuta);    
+  
+        if(argcoste){
+            double coste=problema.coste(ruta);
+            System.out.println("El coste de la ruta es "+"  =  "+coste);
+        }
+        if(argruta){ 
+           ruta.muestraruta();
+        }
+        if(argsolucion){
+            problema.muestraCoordenadasRuta(ruta);
+        }
+       
+        System.out.println("El tiempo de ejecución del algoritmo seleccionado es: "+(time_end-time_start)+" milisegundos");
+ 
     }
-    
 }
+    

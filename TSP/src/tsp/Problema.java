@@ -17,7 +17,7 @@ import java.util.Scanner;
 /**
  * Esta Clase contiene los datos relevantes para la resolucion de la ruta, los cuales se exportaran a la clase Ruta 
  * mediante un objeto problema exportado de esta clase. Contiene datos como el numero de ciudades, un vector 
- * de tipo ArrayList<Ciudad> con las ciudades a visitar, y una matriz de Distancias entre las ciudades.
+ * de ciudades tipo ArrayList con las ciudades a visitar, y una matriz de Distancias entre las ciudades.
  * 
  * @author Juan Manuel López Torralba - Santiago Juárez Rodríguez
  */
@@ -26,9 +26,17 @@ public class Problema {
     private static ArrayList<Ciudad> listaCiudades = new ArrayList<>();
     private double[][] distancia;
     private static int nCiudades;
-        
-        
+
     /**
+     *  Constructor vacío de Problema
+     */
+    public Problema(){
+        listaCiudades=null;
+        nCiudades=0;
+        distancia=null;
+    }
+    
+     /**
      * Constructor de la clase Problema
      * @param n numero total de ciudades que tiene la ruta
      * @param vCities ArrayList<Ciudad> que contiene objetos
@@ -42,7 +50,12 @@ public class Problema {
         distancia=vDist;  
 	}
 
-    public static Problema leerCiudades(Scanner sc){
+    /**
+     * Método que se encarga de leer las ciudades de la entrada estándar
+     * @param sc
+     * @return problema
+     */
+    public Problema leerCiudades(Scanner sc){
 	String etiqueta;
         ArrayList<Ciudad> vCities = new ArrayList<>();
 	double x,y;
@@ -81,7 +94,7 @@ public class Problema {
         
     public int getCiudadMasCercana(int posCiudad, Boolean[] visitados){
         // visitado es aun array que contiene las posciones de las ciudades visitadas
-        //     un uno si la has visitado y un 0 si no la has visitado
+        // un true si la has visitado y un false si no la has visitado
         // posCiudad es la posicion de la ciudad desde la que busco alternaivas
         // devolvemos la posicion de la ciudad más cercana
         double []dist = null;
@@ -159,4 +172,22 @@ public class Problema {
     
         return listaCiudades;
     }
+    
+    
+    /**
+    * Muestra por pantalla las coordenadas de las ciudades de un objeto ruta.
+    */
+    void muestraCoordenadasRuta(Ruta ruta){
+        
+        Ciudad ciudadAux = new Ciudad();
+        for (int i=0;i<ruta.getNumberCiudadesVisitadas();i++){
+            int pos=(Integer)(ruta.getRuta().get(i));
+            ciudadAux=listaCiudades.get(pos);
+            System.out.print(ciudadAux.getPosicion().ObtieneCoordenada_x());
+            System.out.print(" ");
+            System.out.print(ciudadAux.getPosicion().ObtieneCoordenada_y());
+            System.out.print("\n");
+        }
+    }
+    
 }

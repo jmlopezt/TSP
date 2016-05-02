@@ -25,6 +25,16 @@ public class Heuristica {
    // private Boolean[] visitados;
 	
     /**
+     * Constructor vacío de Heurística
+     */
+    public Heuristica(){
+    
+        problema=null;
+        mejorRuta=null;
+        ordenViaje=null;
+    }
+    
+    /**
      * Constructor de la clase heurística
      * @param p
      */
@@ -155,7 +165,6 @@ public class Heuristica {
         }
                 // Ahora elegímos qué ciudad insertar y dónde hacerlo
             
-                // Lo que voy a hacer es una especia de Algoritmo de Lloyd-Max.
                 // La ruta inicial tiene un ruta preestablecida por defecto que
                 // corresponde con el triuangulo de mayor extensión.
                 // Por lo tanto comenzando con la posición 1, inamovible que es
@@ -199,9 +208,12 @@ public class Heuristica {
             return rutaFinal; 
 	}
 /**
- * 
+ * A partir de la ruta inicial calculada en obtenerRutaInicial, se obtiene una ruta 
+ * con el método de la insercion más lejana, donde se añade una ciudad a 
+ * la ruta si cumple el requisito de que la distancia desde la ciudad actual 
+ * a la ciudad propuesta es mayor que la del triangulo inicial
  * @param problema
- * @return mejorRuta 
+ * @return rutaFinal 
  */
     public Ruta insercionLejana (Problema problema){
         

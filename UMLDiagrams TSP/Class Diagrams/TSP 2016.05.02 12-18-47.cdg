@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="TSP">
+  <ClassDiagramComponents>
+    <Class name="Ciudad" package="tsp" visibility="public" xPosition="16.0" yPosition="20.0">
+      <Fields>
+        <Field name="etiqueta" type="String" visibility="private"/>
+        <Field name="posicion" type="Punto" visibility="private"/>
+        <Field name="numbin" type="Scanner" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="package"/>
+        <Constructor visibility="package">
+          <Argument type="String" name="nombre"/>
+          <Argument type="Punto" name="punto"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="LeeCiudad" returnType="void" visibility="package"/>
+        <Method name="EscribeCiudad" returnType="void" visibility="package"/>
+        <Method name="getPosicion" returnType="Punto" visibility="package"/>
+        <Method name="calculaDistancia" returnType="double" visibility="public">
+          <Argument type="Ciudad" name="ciudad"/>
+        </Method>
+        <Method name="calcCosteInsercion" returnType="double" visibility="public">
+          <Argument type="Ciudad" name="b"/>
+          <Argument type="Ciudad" name="c"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Heuristica" package="tsp" visibility="public" xPosition="488.0" yPosition="410.0">
+      <Fields>
+        <Field name="problema" type="Problema" visibility="private"/>
+        <Field name="mejorRuta" type="Ruta" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="Problema" name="p"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="obtenerRutaAlgoritmo1" returnType="Ruta" visibility="public">
+          <Argument type="Problema" name="problema"/>
+        </Method>
+        <Method name="obtenerRutaInicial" returnType="Ruta" visibility="public">
+          <Argument type="Problema" name="problema"/>
+        </Method>
+        <Method name="insercionEconomica" returnType="Ruta" visibility="public">
+          <Argument type="Problema" name="problema"/>
+        </Method>
+        <Method name="insercionLejana" returnType="Ruta" visibility="public">
+          <Argument type="Problema" name="problema"/>
+        </Method>
+        <Method name="obtenerRutaAlgoritmo4" returnType="Ruta" visibility="public">
+          <Argument type="Problema" name="problema"/>
+        </Method>
+        <Method name="obtenerRutaAlgoritmo5" returnType="Ruta" visibility="public">
+          <Argument type="Problema" name="problema"/>
+        </Method>
+        <Method name="mejorarLocalmente" returnType="Ruta" visibility="public">
+          <Argument type="Ruta" name="ruta"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Problema" package="tsp" visibility="public" xPosition="513.0" yPosition="20.0">
+      <Fields>
+        <Field name="listaCiudades" type="ArrayList&lt;Ciudad&gt;" visibility="private" isStatic="true"/>
+        <Field name="distancia" type="double[][]" visibility="private"/>
+        <Field name="nCiudades" type="int" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="int" name="n"/>
+          <Argument type="ArrayList&lt;Ciudad&gt;" name="vCities"/>
+          <Argument type="double[][]" name="vDist"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="leerCiudades" returnType="Problema" visibility="public">
+          <Argument type="Scanner" name="sc"/>
+        </Method>
+        <Method name="getDistancia" returnType="double" visibility="public">
+          <Argument type="int" name="pos1"/>
+          <Argument type="int" name="pos2"/>
+        </Method>
+        <Method name="getCiudadMasCercana" returnType="int" visibility="public">
+          <Argument type="int" name="posCiudad"/>
+          <Argument type="Boolean[]" name="visitados"/>
+        </Method>
+        <Method name="getCiudad" returnType="Ciudad" visibility="public" isStatic="true">
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="getNumeroCiudades" returnType="int" visibility="public"/>
+        <Method name="coste" returnType="double" visibility="public">
+          <Argument type="Ruta" name="ruta"/>
+        </Method>
+        <Method name="getListaCiudades" returnType="ArrayList&lt;Ciudad&gt;" visibility="public"/>
+        <Method name="muestraCoordenadasRuta" returnType="void" visibility="package">
+          <Argument type="Ruta" name="ruta"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Punto" package="tsp" visibility="public" xPosition="16.0" yPosition="385.0">
+      <Fields>
+        <Field name="numbin" type="Scanner" visibility="package"/>
+        <Field name="x" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="package"/>
+        <Constructor visibility="package">
+          <Argument type="double" name="coordenada_x"/>
+          <Argument type="double" name="coordenada_y"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="LeePunto" returnType="Punto" visibility="package"/>
+        <Method name="EscribePunto" returnType="void" visibility="package"/>
+        <Method name="ObtieneCoordenada_x" returnType="double" visibility="package"/>
+        <Method name="ObtieneCoordenada_y" returnType="double" visibility="package"/>
+        <Method name="CalcDistEuclid" returnType="double" visibility="package">
+          <Argument type="double" name="a"/>
+          <Argument type="double" name="b"/>
+        </Method>
+        <Method name="PuntoMedio" returnType="Punto" visibility="package">
+          <Argument type="double" name="a"/>
+          <Argument type="double" name="b"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Ruta" package="tsp" visibility="public" xPosition="970.0" yPosition="235.0">
+      <Fields>
+        <Field name="nCiudadesVisitadas" type="int" visibility="private"/>
+        <Field name="rutaCiudades" type="ArrayList&lt;Integer&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="package">
+          <Argument type="int" name="ntotalCiudades"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="addCiudad" returnType="void" visibility="public">
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="addCiudadInLocation" returnType="void" visibility="public">
+          <Argument type="int" name="n"/>
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="getRuta" returnType="ArrayList" visibility="public"/>
+        <Method name="getNumberCiudadesVisitadas" returnType="int" visibility="public"/>
+        <Method name="getPosCiudad" returnType="int" visibility="public">
+          <Argument type="int" name="pos"/>
+        </Method>
+        <Method name="muestraruta" returnType="void" visibility="package"/>
+      </Methods>
+    </Class>
+    <Class name="TSP" package="tsp" visibility="public" xPosition="862.0" yPosition="600.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="tsp.Ciudad" target="tsp.Ciudad" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="tsp.Problema" target="tsp.Ruta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="tsp.Problema" target="tsp.Ciudad" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="problema" source="tsp.Heuristica" target="tsp.Problema" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="tsp.Ciudad" target="tsp.Punto" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="posicion" source="tsp.Ciudad" target="tsp.Punto" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaCiudades" source="tsp.Problema" target="tsp.Ciudad" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Ciudad&gt;"/>
+    <UseRelation source="tsp.Heuristica" target="tsp.Ruta" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mejorRuta" source="tsp.Heuristica" target="tsp.Ruta" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="tsp.Problema" target="tsp.Problema" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="tsp.Punto" target="tsp.Punto" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
