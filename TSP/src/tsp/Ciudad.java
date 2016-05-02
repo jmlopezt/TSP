@@ -15,15 +15,11 @@ package tsp;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
- *
- * @author Juanma
+ * Esta clase almacenará un par (x,y) asociado a la posición de una ciudad
+ * además de una etiqueta (String) asociada a cada ciudad
+ * @author Juan Manuel López Torralba - Santiago Juárez Rodríguez
  */
 public class Ciudad {
     
@@ -32,36 +28,55 @@ public class Ciudad {
     
     Scanner numbin = new Scanner(System.in);  
 
-    
-    Ciudad(){
+    /**
+     * Constructor de la clase Ciudad que inicializa a 0 tanto
+     * la posición como su etiqueta
+     */
+    public Ciudad(){
         
         Punto punto=new Punto();
         posicion=punto;
         etiqueta="0";
     }
     
-    Ciudad(String nombre,Punto punto){
+    /**
+     * Constructor de Ciudad que se le pasa un objeto de la clase punto
+     * conteniendo su posición, ademas de su etiqueta
+     * @param nombre etiqueta de la ciudad
+     * @param punto coordenadas x e y de la ciudad
+     */
+    public Ciudad(String nombre,Punto punto){
         
         this.etiqueta=nombre;
         this.posicion=punto;
     
     }
     
-    void LeeCiudad(){
+    /**
+     * Método que lee la ciudad y sus parámetros desde la 
+     * entrada 
+     */
+    public void LeeCiudad(){
         
         posicion.LeePunto();
         System.out.println("Introduce el nombre de la ciudad");
         etiqueta=numbin.next();     
     }
     
-    void EscribeCiudad(){
+    /**
+     * Método que escribe la ciudad y sus objetos por pantalla
+     */
+    public void EscribeCiudad(){
         
         posicion.EscribePunto();
         System.out.println("  "+etiqueta);
     }
     
-    
-    Punto getPosicion(){
+    /**
+     * Método que devuelve la posición de una ciudad
+     * @return posicion coordenadas x e y de la ciudad
+     */
+    public Punto getPosicion(){
         
         return posicion;
     }
@@ -76,18 +91,5 @@ public class Ciudad {
         
         return dist;  
     }
-    
-    
-    public double calcCosteInsercion( Ciudad b, Ciudad c){
-
-        double distanciaAB,distanciaBC,distanciaAC;
-        distanciaAB=calculaDistancia(b);
-        distanciaBC=b.calculaDistancia(c);
-        distanciaAC=calculaDistancia(c);
-
-        return (distanciaAC+distanciaBC-distanciaAB);
-
-    }
-    
-    
+ 
 }

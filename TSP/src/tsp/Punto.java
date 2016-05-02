@@ -20,7 +20,7 @@ import java.util.*;
 /**
  *La clase punto representa las coordenadas en 2D de un punto:
  * las coordenadas x e y.
- * @author juanma
+ * @author Juan Manuel López Torralba - Santiago Juárez Rodríguez
  */
 public class Punto {
  /*

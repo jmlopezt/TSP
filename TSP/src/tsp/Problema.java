@@ -31,15 +31,15 @@ public class Problema {
      *  Constructor vacío de Problema
      */
     public Problema(){
-        listaCiudades=null;
+
         nCiudades=0;
-        distancia=null;
+
     }
     
      /**
      * Constructor de la clase Problema
      * @param n numero total de ciudades que tiene la ruta
-     * @param vCities ArrayList<Ciudad> que contiene objetos
+     * @param vCities ArrayList<Ciudad> tipo Ciudad que contiene objetos
      * de la clase ciudad. Las ciudades y su posición en la ruta.
      * @param vDist Vector de distancias entre ciudades de la ruta
      */
@@ -53,11 +53,10 @@ public class Problema {
     /**
      * Método que se encarga de leer las ciudades de la entrada estándar
      * @param sc
-     * @return problema
      */
-    public Problema leerCiudades(Scanner sc){
+    public void leerCiudades(Scanner sc){
+        
 	String etiqueta;
-        ArrayList<Ciudad> vCities = new ArrayList<>();
 	double x,y;
                 
 	sc.next();// esto hace que nos lea hasta el espacio en blanco.
@@ -70,14 +69,16 @@ public class Problema {
             y=sc.nextDouble();
             Punto posicion = new Punto(x,y); 
             Ciudad ciudad =new Ciudad(etiqueta,posicion);
-            vCities.add(ciudad);
+            listaCiudades.add(ciudad);
         }
-                
-        Problema problema=new Problema(nCiudades,vCities,null);
-                
-        return problema;
     }
       
+    /**
+     * Devuelve la distancia euclidea entre 2 ciudades
+     * @param pos1
+     * @param pos2
+     * @return
+     */
     public double getDistancia(int pos1, int pos2){
             
         double dist;
@@ -92,12 +93,18 @@ public class Problema {
         return dist;
     }
         
+    /**
+     * Método que obtiene la ciudad más cercana dada una posicion inicial 
+     * desde la que buscar alternativas.
+     * @param posCiudad Posicion de la ciudad desde la que busco alternativas
+     * @param visitados array de booleanos que contiene las posiciones de 
+     * las ciudades visitadas, true si las ha visitado y false si no las 
+     * ha visitado.
+     * @return cityCloser la posicion de la ciudad mas cercana
+     */
     public int getCiudadMasCercana(int posCiudad, Boolean[] visitados){
-        // visitado es aun array que contiene las posciones de las ciudades visitadas
-        // un true si la has visitado y un false si no la has visitado
-        // posCiudad es la posicion de la ciudad desde la que busco alternaivas
-        // devolvemos la posicion de la ciudad más cercana
-        double []dist = null;
+
+        double[] dist=new double[visitados.length];
         int cityCloser=0;
         int contador=0;
             
@@ -106,7 +113,7 @@ public class Problema {
             
         ciudadActual=listaCiudades.get(posCiudad);
 
-        for (int i=0;i<listaCiudades.size();i++){
+        for (int i=0;i<visitados.length;i++){
                 
             if(visitados[i]==false){
                         
@@ -133,19 +140,31 @@ public class Problema {
     return cityCloser;
     }
         
-
+    /**
+     * Devuelve la ciudad en el indice del array pos
+     * @param pos indice del array donde se encuentra la ciudad 
+     * que queremos
+     * @return
+     */
     public static Ciudad getCiudad(int pos){
         
         return listaCiudades.get(pos);
     }
         
+    /**
+     * Devuelve la dimensión del problema
+     * @return
+     */
     public int getNumeroCiudades(){
             
-        int nCities=listaCiudades.size();
-        return nCities;
-        }
+        return nCiudades;
+    }
         
-
+    /**
+     * Devuelve el coste de la ruta
+     * @param ruta ruta a la que se le calcula el coste
+     * @return coste
+     */
     public double coste(Ruta ruta){
         Double coste=0.0;
         Ciudad ciudadAux = new Ciudad();
@@ -176,11 +195,15 @@ public class Problema {
     
     /**
     * Muestra por pantalla las coordenadas de las ciudades de un objeto ruta.
+     * @param ruta
     */
-    void muestraCoordenadasRuta(Ruta ruta){
+    public void muestraCoordenadasRuta(Ruta ruta){
         
+        nCiudades=ruta.getNumberCiudadesVisitadas();
         Ciudad ciudadAux = new Ciudad();
-        for (int i=0;i<ruta.getNumberCiudadesVisitadas();i++){
+        
+        for (int i=0;i<nCiudades;i++){
+            
             int pos=(Integer)(ruta.getRuta().get(i));
             ciudadAux=listaCiudades.get(pos);
             System.out.print(ciudadAux.getPosicion().ObtieneCoordenada_x());

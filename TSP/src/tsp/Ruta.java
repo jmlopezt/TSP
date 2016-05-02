@@ -34,7 +34,7 @@ public class Ruta {
     */
     Ruta(int ntotalCiudades){
         
-        ArrayList<Integer> rutaCiudades = new ArrayList<>();
+     //   ArrayList<Integer> rutaCiudades = new ArrayList<>();
         nCiudadesVisitadas=ntotalCiudades;
     }
  
@@ -101,5 +101,6 @@ public class Ruta {
             System.out.println(rutaCiudades.get(i));   
         }
     }
+
     
 }

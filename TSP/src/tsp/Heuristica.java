@@ -46,10 +46,9 @@ public class Heuristica {
     /**
      * Este método resuelve la ruta mediante la Heurística del vecino
      * más cercano
-     * @param problema
      * @return mejorRuta
      */
-    public Ruta obtenerRutaAlgoritmo1(Problema problema){
+    public Ruta obtenerRutaAlgoritmo1(){
         
         ArrayList<Ciudad> listaCiudadesAux = new ArrayList<>();
         listaCiudadesAux=problema.getListaCiudades();
@@ -138,7 +137,7 @@ public class Heuristica {
      * @param problema
      * @return mejorRuta
      */
-    public Ruta insercionEconomica(Problema problema){
+    public Ruta insercionEconomica(){
         
         int nCiudades=problema.getNumeroCiudades();
         int anteriorCiudad;
@@ -153,8 +152,7 @@ public class Heuristica {
         Boolean[] visitados = new Boolean[nCiudades];
         
         Ruta rutaInicial = new Ruta(0);
-        Ruta rutaAux = new Ruta(0);
-	Ruta rutaFinal = new Ruta(nCiudades);
+        Ruta rutaAux = new Ruta(nCiudades);
         
 		//rutaInicial=ordenViaje (el triangulo calculado anteriormente)
 	rutaInicial=obtenerRutaInicial(problema);
@@ -204,18 +202,17 @@ public class Heuristica {
                 indexOfCityRef=0;
             }
         }
-            rutaFinal=rutaAux;
-            return rutaFinal; 
+            mejorRuta=rutaAux;
+            return mejorRuta; 
 	}
-/**
- * A partir de la ruta inicial calculada en obtenerRutaInicial, se obtiene una ruta 
- * con el método de la insercion más lejana, donde se añade una ciudad a 
- * la ruta si cumple el requisito de que la distancia desde la ciudad actual 
- * a la ciudad propuesta es mayor que la del triangulo inicial
- * @param problema
- * @return rutaFinal 
- */
-    public Ruta insercionLejana (Problema problema){
+    /**
+    * A partir de la ruta inicial calculada en obtenerRutaInicial, se obtiene una ruta 
+    * con el método de la insercion más lejana, donde se añade una ciudad a 
+    * la ruta si cumple el requisito de que la distancia desde la ciudad actual 
+    * a la ciudad propuesta es mayor que la del triangulo inicial
+    * @return mejorRuta 
+    */
+    public Ruta insercionLejana (){
         
         int nCiudades=problema.getNumeroCiudades();
         
@@ -229,8 +226,7 @@ public class Heuristica {
         Boolean[] visitados = new Boolean[nCiudades];
         
         Ruta rutaInicial = new Ruta(0);
-        Ruta rutaAux = new Ruta(0);
-	Ruta rutaFinal = new Ruta(nCiudades);
+        Ruta rutaAux = new Ruta(nCiudades);
         
 		//rutaInicial=ordenViaje (el triangulo calculado anteriormente)
 	rutaInicial=obtenerRutaInicial(problema);
@@ -274,18 +270,17 @@ public class Heuristica {
                 indexOfCityRef=0;
             }
         }
-            rutaFinal=rutaAux;
+            mejorRuta=rutaAux;
 
-        return rutaFinal;
+        return mejorRuta;
     }
     
     /**
      * En este metodo se calculan k ruta aleatorias y nos devuelve la ruta que 
      * presente menor coste
-     * @param problema
      * @return mejorRuta 
      */
-    public Ruta obtenerRutaAlgoritmo4 (Problema problema){
+    public Ruta obtenerRutaAlgoritmo4 (){
         
         int nCiudades=problema.getNumeroCiudades();
         int k=10000;
@@ -313,10 +308,9 @@ public class Heuristica {
      * Metodo que obtiene una ruta aleatoria a la que se le realizan adiciones.
      * Se calcula el coste de la ruta con adición y sin adición y nos quedamos 
      * con la ruta de menor coste.
-     * @param problema
      * @return mejorRuta
      */
-    public Ruta obtenerRutaAlgoritmo5 (Problema problema){
+    public Ruta obtenerRutaAlgoritmo5 (){
         
         int contadorNoMejora = 0;
         int nIteraciones=100;

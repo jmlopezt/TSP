@@ -32,7 +32,7 @@ public class TSP {
      */
     public static void main(String[] args) {
         
-        Ruta ruta=null;
+        Ruta ruta=new Ruta(0);
         Heuristica Heuristica=new Heuristica();
         Problema problema=new Problema();
  
@@ -72,19 +72,24 @@ public class TSP {
         time_start=System.currentTimeMillis();     
 
             if (argAlg1) {
-                ruta = Heuristica.obtenerRutaAlgoritmo1(problema);
+                ruta = new Heuristica(problema).obtenerRutaAlgoritmo1();
+               // ruta = Heuristica.obtenerRutaAlgoritmo1(problema);
             }
             if (argAlg2){
-                ruta = Heuristica.insercionEconomica(problema);
+                ruta = new Heuristica(problema).insercionEconomica();
+                //ruta = Heuristica.insercionEconomica();
             }
             if (argAlg3){
-                ruta = Heuristica.insercionLejana(problema);
+                ruta = new Heuristica(problema).insercionLejana();
+                //ruta = Heuristica.insercionLejana();
             }
             if (argAlg4){
-                ruta = Heuristica.obtenerRutaAlgoritmo4(problema);
+                ruta = new Heuristica(problema).obtenerRutaAlgoritmo4();
+                //ruta = Heuristica.obtenerRutaAlgoritmo4();
                }
             if (argAlg5){
-                ruta = Heuristica.obtenerRutaAlgoritmo5(problema);
+                ruta = new Heuristica(problema).obtenerRutaAlgoritmo5();
+                //ruta = Heuristica.obtenerRutaAlgoritmo5();
             }
            
         time_end=System.currentTimeMillis(); 
