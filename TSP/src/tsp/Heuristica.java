@@ -72,7 +72,13 @@ public class Heuristica {
         }	
 	return mejorRuta;
     }
-    
+    /**
+     * Este metodo calcula una ruta inicial triangular que consta de la ciudad
+     * con la mayor coordenada Y, mayor coordenada X y menor coordenada X.
+     * @param problema
+     * @return mejorRuta
+     * 
+     */
     public Ruta obtenerRutaInicial(Problema problema){
         
         ArrayList<Ciudad> listaCiudadesAux = new ArrayList<>();
@@ -114,7 +120,14 @@ public class Heuristica {
 		
 	return ordenViaje;
     }
-    
+    /**
+     * A partir de la ruta inicial calculada anteriormente, se obtiene una ruta 
+     * con el método de la insercion más económica, donde se añade una ciudad a 
+     * la ruta si cumple el requisito de que la distancia desde la ciudad actual 
+     * a la ciudad propuesta es menor que la del triangulo inicial
+     * @param problema
+     * @return mejorRuta
+     */
     public Ruta insercionEconomica(Problema problema){
         
         int nCiudades=problema.getNumeroCiudades();
@@ -185,7 +198,11 @@ public class Heuristica {
             rutaFinal=rutaAux;
             return rutaFinal; 
 	}
-
+/**
+ * 
+ * @param problema
+ * @return mejorRuta 
+ */
     public Ruta insercionLejana (Problema problema){
         
         int nCiudades=problema.getNumeroCiudades();
@@ -250,6 +267,12 @@ public class Heuristica {
         return rutaFinal;
     }
     
+    /**
+     * En este metodo se calculan k ruta aleatorias y nos devuelve la ruta que 
+     * presente menor coste
+     * @param problema
+     * @return mejorRuta 
+     */
     public Ruta obtenerRutaAlgoritmo4 (Problema problema){
         
         int nCiudades=problema.getNumeroCiudades();
@@ -274,7 +297,13 @@ public class Heuristica {
         return mejorRuta;
 
     }
-    
+    /**
+     * Metodo que obtiene una ruta aleatoria a la que se le realizan adiciones.
+     * Se calcula el coste de la ruta con adición y sin adición y nos quedamos 
+     * con la ruta de menor coste.
+     * @param problema
+     * @return mejorRuta
+     */
     public Ruta obtenerRutaAlgoritmo5 (Problema problema){
         
         int contadorNoMejora = 0;
@@ -305,6 +334,12 @@ public class Heuristica {
         return mejorRuta;
     }
     
+    /**
+     * Metodo utilizado en el metodo anterior para realizar las adiciones de 
+     * ciudades a la ruta
+     * @param ruta
+     * @return ruta 
+     */
     public Ruta mejorarLocalmente (Ruta ruta){
         
         Ruta rutaAux=new Ruta(ruta.getNumberCiudadesVisitadas());
