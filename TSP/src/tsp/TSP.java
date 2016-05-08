@@ -67,6 +67,9 @@ public class TSP {
                 if(args[i].equals("solAlg4")){
                     argAlg4=true;			
                 }
+                if(args[i].equals("solAlg5")){
+                    argAlg5=true;			
+                }
             
         }
         time_start=System.currentTimeMillis();     

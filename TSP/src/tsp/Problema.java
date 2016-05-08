@@ -102,33 +102,34 @@ public class Problema {
      * ha visitado.
      * @return cityCloser la posicion de la ciudad mas cercana
      */
-    public int getCiudadMasCercana(int posCiudad, Boolean[] visitados){
+    public int getCiudadMasCercana(int posCiudad, boolean[] visitados){
 
         double[] dist=new double[visitados.length];
         int cityCloser=0;
         int contador=0;
-            
+        //Boolean[] auxvisitados = new Boolean[visitados.length];
+        //auxvisitados=visitados;
         Ciudad ciudadActual = new Ciudad();
         Ciudad ciudadAux = new Ciudad();
             
         ciudadActual=listaCiudades.get(posCiudad);
 
-        for (int i=0;i<visitados.length;i++){
+        for (int i=0;i</*visitados.length*/listaCiudades.size();i++){
                 
             if(visitados[i]==false){
                         
                 ciudadAux=listaCiudades.get(i);
                 dist[i]= ciudadActual.getPosicion().CalcDistEuclid(ciudadAux.getPosicion().ObtieneCoordenada_x(),ciudadAux.getPosicion().ObtieneCoordenada_y());
                 }
-                else{
+            else{
                     dist[i]=-1;
                 }
             }
             
-        double minDist=dist[0];
+        double minDist=999999999;
             
             // Obtengo el mínimo
-        for (int j=1;j<dist.length;j++){
+        for (int j=0;j<dist.length;j++){
                 
             if(dist[j]>0 && dist[j]<minDist){
                     
@@ -173,7 +174,7 @@ public class Problema {
         ciudadAnterior=listaCiudades.get(0);
             
         for (int i=1;i<ruta.getNumberCiudadesVisitadas();i++){
-            int pos=(Integer)(ruta.getRuta().get(i));
+            int pos=(int)(ruta.getRuta().get(i));
             ciudadAux=listaCiudades.get(pos);
             coste+=ciudadAux.getPosicion().CalcDistEuclid(ciudadAnterior.getPosicion().ObtieneCoordenada_x(), ciudadAnterior.getPosicion().ObtieneCoordenada_y());
             ciudadAnterior=ciudadAux;

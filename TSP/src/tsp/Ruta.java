@@ -28,6 +28,13 @@ public class Ruta {
     private ArrayList<Integer> rutaCiudades = new ArrayList<>();
     
     
+        Ruta(){
+        
+     //   ArrayList<Integer> rutaCiudades = new ArrayList<>();
+       // nCiudadesVisitadas=0;
+    }
+    
+    
     /**
     * Constructor de la clase Ruta
     * @param ntotalCiudades numero de Ciudades que contendrá la ruta.
@@ -59,7 +66,11 @@ public class Ruta {
         rutaCiudades.add(n,pos);
     }
     
-    
+    public int getIndex (int n){
+        
+        int index=rutaCiudades.indexOf(n);
+        return index;
+    }
     /**
      * Método que devuelve una ruta de tipo ArrayList 
      * @return rutaCiudades
@@ -96,7 +107,7 @@ public class Ruta {
      */
     void muestraruta(){
         
-        for(int i=0;i<nCiudadesVisitadas;i++){  
+        for(int i=0;i<rutaCiudades.size();i++){  
             
             System.out.println(rutaCiudades.get(i));   
         }
